@@ -91,9 +91,16 @@ is the only thing that runs them.
   `frontend/src/testing.ts`. Run alone via `pnpm -C frontend test`.
 - **Playwright e2e** (`test/e2e/`, `playwright.config.js`, `pnpm test:e2e`):
   - `macos-launch.spec.js` -- launches the installed `/Applications/Imbue Studio.app`
-    via the `mindsApp` fixture. **The only JS spec** (wired into CI in
-    `minds-launch-to-msg.yml`). The legacy renderer-contract specs were
-    deleted with the pre-SPA shell scripts they drove.
+    via the `mindsApp` fixture. **The only spec wired into CI**
+    (`minds-launch-to-msg.yml`).
+  - `macos-lifecycle.spec.js` -- the macOS windowless-state regressions
+    (#480-#483) against the installed app, driven through its main process;
+    skipped off macOS. Local only.
+  - `context-menu.spec.js` -- the right-click menu, driving a minimal Electron
+    entry (`context-menu-app.js`) rather than the installed app; needs a
+    display (xvfb on Linux). Local only.
+  - The legacy renderer-contract specs were deleted with the pre-SPA shell
+    scripts they drove.
 
 ### 1.5 CI map
 
