@@ -29,7 +29,10 @@ pnpm exec playwright test --config=test/e2e/playwright.config.js macos-launch.sp
 pnpm test:e2e
 ```
 
-`macos-launch.spec.js` is currently the only Playwright spec. The legacy
+Alongside `macos-launch.spec.js`, two local-only specs run under
+`pnpm test:e2e`: `macos-lifecycle.spec.js` (macOS windowless-state
+regressions, against the installed app) and `context-menu.spec.js` (the
+right-click menu, against a minimal Electron entry). The legacy
 renderer-contract specs (`embed-flow`, `local-swap`, `recovery-redirect`,
 `landing-stopped-mind-restart`) drove the pre-SPA shell scripts (chrome.js,
 overlay_layer.js) against a local harness server; they were deleted with
