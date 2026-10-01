@@ -5,7 +5,8 @@ Audit date: 2026-04-23
 > **Partially superseded (2026-07, service-per-origin redesign).** This audit
 > predates the move to per-origin routing: workspace content now lives on
 > `[<service>.]agent-<hex>.localhost:<port>` origins (keyed by host id at the
-> redesign, re-keyed by agent id since), with every
+> redesign, re-keyed by agent id since; the desktop client is now a Flask app
+> served by cheroot, not FastAPI), with every
 > registered service on its own origin and one domain-scoped session cookie
 > per workspace, instead of the system interface multiplexing services under
 > `/service/<name>/...` with cookie `Path` rewriting and Service-Worker

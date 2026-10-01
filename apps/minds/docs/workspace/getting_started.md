@@ -41,8 +41,8 @@ minds run
 3. Fill in:
    - **Name**: a short identifier for the agent (e.g. "selene")
    - **Git repository**: URL or local path to a template repo (e.g. `https://github.com/imbue-ai/default-workspace-template`)
-   - **Launch mode**: DOCKER (Docker container on this machine), LIMA (Lima VM), CLOUD (Docker on a Vultr VPS), or IMBUE_CLOUD (leased pool host via the imbue_cloud provider)
-4. Click "Create" and wait for the Docker build + agent setup
+   - **Launch mode**: where the workspace runs, e.g. DOCKER (Docker container on this machine), LIMA (Lima VM), VULTR (Docker on a Vultr VPS), AWS (EC2 instance), or IMBUE_CLOUD (leased pool host via the imbue_cloud provider); see [launch mode](./glossary.md) in the glossary for the full list
+4. Click "Create" and wait for the workspace build + agent setup
 5. You'll be redirected to the agent's web server when creation completes
 
 ## What happens during creation
@@ -57,9 +57,9 @@ and user-initiated later, from the workspace options panel's Share tab.
 ## Accessing your agent
 
 After creation, the agent is accessible at:
-- **Local**: `https://agent-{hex}.localhost:8421/` (the desktop client byte-forwards the bare workspace origin to the workspace's system interface, which serves the desktop)
-- **Individual app**: `https://{app_name}.agent-{hex}.localhost:8421/` (every registered service owns its own origin; nothing proxies or rewrites service traffic)
-- **Shared** (while sharing is enabled): `https://{label}.{host-id}.{user}.{region}.{domain}`, served over the workspace's share through the self-hosted relay. `{label}` is the service's origin label (`<service>-<rand>`, the shell's for a whole-machine share); it is the link the Share tab shows and copies. The bare `{host-id}.{user}.{region}.{domain}` origin is deliberately not routed, and neither is a plain service-name prefix.
+- **Local**: `https://agent-{hex}.localhost:8421/` (the desktop client byte-forwards the bare workspace origin to the workspace's system interface, and page loads there are redirected to the system interface's own origin, which serves the desktop)
+- **Individual app**: `https://{label}.agent-{hex}.localhost:8421/`, where `{label}` is the service's origin label (`<service>-<rand>`) (every registered service owns its own origin; nothing proxies or rewrites service traffic)
+- **Shared** (while sharing is enabled): `https://{label}.{share_label}.{user_hash}.{region}.{domain}`, served over the workspace's share through the self-hosted relay. `{label}` is the service's origin label (`<service>-<rand>`, the shell's for a whole-machine share); it is the link the Share tab shows and copies. The bare `{share_label}.{user_hash}.{region}.{domain}` origin is deliberately not routed, and neither is a plain service-name prefix. (Older shares lead with the host id and the unhashed user id instead.)
 
 ## Environment variables and config
 

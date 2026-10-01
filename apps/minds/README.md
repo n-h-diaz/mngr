@@ -4,7 +4,7 @@ Run persistent, autonomous AI agents with web access and global forwarding.
 
 ## Overview
 
-Imbue Studio creates and manages persistent Claude agents, each in its own workspace: a local Docker container or Lima VM, or a cloud host (Imbue Cloud, Vultr, AWS, Modal, and others). Each agent gets:
+Imbue Studio creates and manages persistent Claude agents, each in its own workspace: a local Docker container or Lima VM, or a cloud host (Imbue Cloud, Vultr, AWS, and others). Each agent gets:
 
 - A local web interface accessible through the desktop client
 - Optional workspace sharing over a self-hosted relay, with TLS terminated inside the workspace
